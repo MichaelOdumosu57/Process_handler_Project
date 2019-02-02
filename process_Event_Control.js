@@ -64,11 +64,18 @@ const p_Ev_C_EventEmitter            =  n_API.API_n_b_p.events.EventEmitter
       // p_Ev_C.ev_rgs.on(   'newListener'  p_Ev_C.ev_rgs_obj.newListener_default)
 
               //use to prevent the developer from making accidenal new Listeners and breaking the anything functionality, most likely
-              // p_Ev_C.ev_rgs_obj.newListener_rgs used to help the ee remove the accident event when its fully attached
+                  // if  p_Ev_C_listen_handle_n_m >>  const_fn_new_help is emitted
+                  // p_Ev_C.ev_rgs_obj.newListener_rgs used to help the ee remove the accident event when its fully attached
+
+              // if p_Ev_C_listen_handle_n_m >>  const_fn_safe is emitted
+              // p_Ev_C.ev_rgs_obj.newListener_interval = {};
+              // contains events, listener, actual      its for setInterval that loses track of what its supposed to be watching  
+                        // .ev_metadata = {}
+                       //  contains events and listener this is sealed so the internal API cannot break its intended functionlaity by removing it s eyes
 
       // implemet a class and reroute desired functionality the developer can evenutally acess the functionality if they know where to look
         // this is in const_fn_unsafe
-        
+
 
     //if you leave these functions as constants devs have greater access and can destroy tjem        
 
@@ -340,10 +347,12 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
  
                                     }         
                                     p_Ev_C.ev_rgs = new p_Ev_C_Emitter()                                    
-                                    debugger                               
+                               
                               }],
                               ['const_fn_safe',
                               function(){
+                                    class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {}
+                                    p_Ev_C.ev_rgs = new p_Ev_C_Emitter() 
                                     p_Ev_C.ev_rgs_obj.removeListener_default = function(){
                                                                                     var dev_obj = {}
                                                                                     for(var p_Ev_C_0_i =0; p_Ev_C_0_i != arguments.length; p_Ev_C_0_i++ ){
@@ -374,7 +383,10 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
                                                                                     p_Ev_C.ev_rgs.on(   'newListener',p_Ev_C.ev_rgs_obj.newListener_default   )
                                                                                                  
                                                                                 }
-                                    p_Ev_C.ev_rgs_obj.newListener_default = function(   events,listener   ){        
+                                    p_Ev_C.ev_rgs_obj.newListener_interval = {};
+                                    p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata = {}
+                                    // contains events, listener, actual
+                                    p_Ev_C.ev_rgs_obj.newListener_default = function(){        
                                                                                 var dev_obj = {}                                                                                
                                                                                 for(var p_Ev_C_1_i =0; p_Ev_C_1_i != arguments.length; p_Ev_C_1_i++ ){
 
@@ -408,21 +420,41 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
 
 
                                                                                 }                                                                                                              
-                                                                                console.log(   p_Ev_C.ev_rgs   )                                                                                
-                                                                                console.log(   dev_obj.events,p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )
-                                                                                console.log(   typeof(   p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )   )
-                                                                                console.log(   typeof(   dev_obj.listener   )   )
+                                                                                debugger;
                                                                                 dev_obj.listener_type = typeof(   dev_obj.listener   )  
 
                                                                                 
                                                                                 if(   dev_obj.listener_type.match(   'function'   ) != -1  ){
+                                                                                    // three ways setImmediate, setInterval or process.nextTick
+                                                                                    p_Ev_C.ev_rgs_obj.newListener_interval.events               = dev_obj.events
+                                                                                    p_Ev_C.ev_rgs_obj.newListener_interval.listener             = dev_obj.listener  
+
+
+                                                                                    if(   !Object.isSealed(   p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata   )   ){
+
+
+                                                                                        p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata.events   = dev_obj.events
+                                                                                        p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata.listener = dev_obj.listener  
+
+
+                                                                                    }
+
+
+                                                                                    p_Ev_C.ev_rgs_obj.newListener_interval.actual   = setInterval(() =>{
+                                                                                        
+
+                                                                                        if(   p_Ev_C.ev_rgs._events[p_Ev_C.ev_rgs_obj.newListener_interval.events] !=undefined   ){
+
+
+                                                                                            p_Ev_C.ev_rgs.off(   p_Ev_C.ev_rgs_obj.newListener_interval.events    ,   p_Ev_C.ev_rgs_obj.newListener_interval.listener    )
+                                                                                            clearInterval(   p_Ev_C.ev_rgs_obj.newListener_interval.actual   )
+                                                                                        
+                                                                                        }  
 
                                                                                         
-                                                                                        p_Ev_C.ev_rgs.off(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   )
-                                                                                        p_Ev_C.ev_rgs.off(   dev_obj.events,dev_obj.listener   )                                                                                                                                                                                     
-                                                                                        p_Ev_C.ev_rgs.on(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   ) 
-                                                                                        debugger                                                                                                  
-
+                                                                                        console.log("am I trying to clear it ")
+                                                                                    },0)
+                                                                                    Object.seal(   p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata   )
 
                                                                                 }    
                                                                                 
@@ -434,11 +466,14 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
                                                                                                                   console.log(dev_obj)
                                                                                                                   console.log(   "ridiculous"   )   
                                                                                                                   debugger;                  
-                                                                                                              }],                                                                                                         
+                                                                                                              }],  
+                                                                                                              ['prevent',  
+                                                                                                              function(){                         
+                                                                                                              }],                                                                                                                                                                                                                        
                                                                                                         ])
                                                                                 p_Ev_C_1_i_n_m.emit(   p_Ev_C_node_mode_threads[1][0],p_Ev_C_node_mode_threads[1][1]  )         
                                                                             }                                                                                                                                                    
-                                    p_Ev_C.ev_rgs.on(   'removeListener',  p_Ev_C.ev_rgs_obj.removeListener_default)
+                                    // p_Ev_C.ev_rgs.on(   'removeListener',  p_Ev_C.ev_rgs_obj.removeListener_default)
                                     p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_default)  
                                     // delete p_Ev_C.ev_rgs.__proto__.addListener   
                                     // delete p_Ev_C.ev_rgs.__proto__.on    
