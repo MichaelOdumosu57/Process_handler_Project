@@ -19,24 +19,8 @@ const p_Ev_C_node_mode_threads       =  n_API.API_n_c.API_node_mode.node_mode_th
                                                                               })
 const p_Ev_C_n_m_t_r                 =  n_API.API_n_c.API_node_mode.n_m_t_r
 const p_Ev_C_EventEmitter            =  n_API.API_n_b_p.events.EventEmitter
-class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {
 
-  constructor(){
-    super()  
-  }
 
-  get  on(){
-      console.log('cant do it ')
-  }
-
-                                    // delete p_Ev_C.ev_rgs.__proto__.addListener   
-                                    // delete p_Ev_C.ev_rgs.__proto__.on    
-                                    // delete p_Ev_C.ev_rgs.__proto__.once   
-                                    // delete p_Ev_C.ev_rgs.__proto__.prependListener   
-                                    // delete p_Ev_C.ev_rgs.__proto__.prependOnceListener      
-}
-e = new p_Ev_C_Emitter()
-debugger
 
 // process_uncaughtException.message
     //message to for dev to tell self when the process completes everything
@@ -73,13 +57,18 @@ debugger
       // helps ee ev_rgs do it job
 
 
-    // p_Ev_C.ev_rgs.on(   'removeListener'  p_Ev_C.ev_rgs_obj.removeListener_default)
-      //should presever only the given listenerns make sure newListener does not intefere here
+    // optional dev restictions
+      // p_Ev_C.ev_rgs.on(   'removeListener'  p_Ev_C.ev_rgs_obj.removeListener_default)
+        //should presever only the given listenerns make sure newListener does not intefere here
 
-    // p_Ev_C.ev_rgs.on(   'newListener'  p_Ev_C.ev_rgs_obj.newListener_default)
+      // p_Ev_C.ev_rgs.on(   'newListener'  p_Ev_C.ev_rgs_obj.newListener_default)
 
-            //use to prevent the developer from making accidenal new Listeners and breaking the anything functionality, most likely
-            // p_Ev_C.ev_rgs_obj.newListener_rgs used to help the ee remove the accident event when its fully attached
+              //use to prevent the developer from making accidenal new Listeners and breaking the anything functionality, most likely
+              // p_Ev_C.ev_rgs_obj.newListener_rgs used to help the ee remove the accident event when its fully attached
+
+      // implemet a class and reroute desired functionality the developer can evenutally acess the functionality if they know where to look
+        // this is in const_fn_unsafe
+        
 
     //if you leave these functions as constants devs have greater access and can destroy tjem        
 
@@ -87,7 +76,6 @@ debugger
 var process_Event_Control = {}
 var p_Ev_C = {}
 p_Ev_C.s_c = {} //figure out how to protect this
-p_Ev_C.ev_rgs = new p_Ev_C_Emitter()
 p_Ev_C.ev_rgs_obj = {}
 const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({   
 
@@ -290,6 +278,72 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
                               }],  
                               ['const_fn_unsafe',
                               function(){
+                                    class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {
+                                        constructor(){
+                                          super()  
+                                        }
+
+                                        p_Ev_C_Emitter_warn(){
+                                            process.emitWarning('accessing low level process management', {
+                                                code: 'process_Event_Control Warning',
+                                                detail: 'Hardware resources will be severly compromised if accesed',
+                                                ctor:function(){}
+                                            });  
+                                        }
+
+                                        get on(){                                                                                        
+                                              this.p_Ev_C_Emitter_warn()                                              
+                                            // not working for some reason not sure if placing in a function is safe becuas of sync async                                                                                 
+                                        }    
+                                        get once(){                                                                                        
+                                              this.p_Ev_C_Emitter_warn()                                                                                                                                                                             
+                                        }                                          
+                                        get addListener(){
+                                              this.p_Ev_C_Emitter_warn()
+                                        }
+                                        get prependListener(){
+                                              this.p_Ev_C_Emitter_warn()
+                                        } 
+                                        get prependOnceListener(){
+                                              this.p_Ev_C_Emitter_warn()
+                                        }  
+                                        get off(){
+                                              this.p_Ev_C_Emitter_warn()
+                                        }  
+                                        get removeListener(){
+                                              this.p_Ev_C_Emitter_warn()
+                                        }
+                                        get removeAllListeners(){
+                                              this.p_Ev_C_Emitter_warn() 
+                                        }                                                                                                                     
+                                        get snufjet(){
+                                            return this.__proto__.__proto__.addListener
+                                        }
+                                        get promptfan(){
+                                            return this.__proto__.__proto__.once
+                                            // cant use this it uses the above prototype
+                                        }
+                                        get tjet(){
+                                            return this.__proto__.__proto__.prependListener
+                                        }
+                                        get diptuck(){
+                                            return this.__proto__.__proto__.prependOnceListener
+                                            // camt use this it uses the above prototypes
+                                        }
+                                        get niscom(){
+                                            return this.__proto__.__proto__.removeListener
+                                        }
+                                        get aoki(){
+                                            return this.__proto__.__proto__.removeAllListeners
+                                            // cant use this it uses the above prototypes
+                                        }
+ 
+                                    }         
+                                    p_Ev_C.ev_rgs = new p_Ev_C_Emitter()                                    
+                                    debugger                               
+                              }],
+                              ['const_fn_safe',
+                              function(){
                                     p_Ev_C.ev_rgs_obj.removeListener_default = function(){
                                                                                     var dev_obj = {}
                                                                                     for(var p_Ev_C_0_i =0; p_Ev_C_0_i != arguments.length; p_Ev_C_0_i++ ){
@@ -392,7 +446,7 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
                                     // delete p_Ev_C.ev_rgs.__proto__.prependListener   
                                     // delete p_Ev_C.ev_rgs.__proto__.prependOnceListener                                                                                                                                                                                           
 
-                              }],                              
+                              }],                                                            
                               ['C',
                               function(){
                                   //async version of above     
@@ -408,6 +462,7 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
                                   'no_const_fn'      :'sync',
                                   'const_fn_new_help':'sync',
                                   'const_fn_unsafe'  :'sync',
+                                  'const_fn_safe'    :'sync',
                                   'C'                :'async',
                                   'D'                :'async'
                               }                                                                                                                                                                 

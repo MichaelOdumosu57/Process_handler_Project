@@ -7,7 +7,7 @@
                             ['test',      'add_listener'         ],                            
                           ],
                         "process_Event_Control.js":[
-                            ['test',      'const_fn'                   ],
+                            ['test',      'const_fn_unsafe'            ],
                             ['test',      ''                           ]                            
                           ]                           
                     }
