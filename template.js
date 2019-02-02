@@ -43,15 +43,28 @@ const break_p_Ev_C_n_m = node_mode({
                                               const try_it = require('./process_Event_Control.js')                                                
                                           }], 
                                           ['add_listener',
-                                          function(){                                              
-                                              try_it = require('./process_Event_Control.js')
-                                              try_it.ev_rgs.on('b',function(){console.log('delete me')})  
-                                              console.log('get me')
+                                          function(){ 
+                                              const p_Ev_C = require('./process_Event_Control.js')   
+                                              debugger                                                                                        
+                                              try_it = p_Ev_C({                                                                  
+                                                                  p_Ev_C_listen_handle_n_m:{
+                                                                                              node_mode_async:{
+                                                                                                                  'no_const_fn'                 :'sync',
+                                                                                                                  'const_fn_new_help'           :'sync',
+                                                                                                                  'use_class_stable'            :'async',
+                                                                                                                  'use_setInterval_unstable'    :'sync',
+                                                                                                                  'C'                           :'async',
+                                                                                                                  'D'                           :'async'
+                                                                                                              } 
+                                                                                                                                                  
+                                                                  }
+                                                              })
+                                              try_it.ev_rgs.on('b',function(){console.log('delete me')})                                                
                                           }],  
-                                          ['add_no_obj_listener',
+                                          ['no_metadata',
                                           function(){                                         
-                                              //make sure ev_rgs is bare the rgs function     
-                                              try_it = require('./process_Event_Control.js').ev_rgs 
+                                              const p_Ev_C = require('./process_Event_Control.js'     
+                                              try_it = p_Ev_C() 
                                               try_it.on('b',function(){console.log('delete me')})  
 
                                           }],    
@@ -60,13 +73,13 @@ const break_p_Ev_C_n_m = node_mode({
                                               'use_raw'               :'sync',
                                               'use_props'             :'sync',
                                               'just_require'          :'async',
-                                              'add_listener'          :'sync',
-                                              'add_no_obj_listener'   :'async'
+                                              'add_listener'          :'async',
+                                              'no_metadata'           :'async'
                                           }                                                                                                                                                                                                                                 
                                     }) 
 break_p_Ev_C_n_m.emit(    node_mode_threads[0][0],node_mode_threads[0][1]   )
 console.log(   try_it   )
-process.exit()
+// process.exit()
 p_uE.message = 'an error with the process event emitter occured'
 p_bE.message = 'async operations before I am ready to finish here'
 p_bE.last.push(['simple_handler',{

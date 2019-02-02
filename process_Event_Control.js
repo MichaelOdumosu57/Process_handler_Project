@@ -45,515 +45,478 @@ const p_Ev_C_EventEmitter            =  n_API.API_n_b_p.events.EventEmitter
 // think about how this handles async and sync
 
 // process_Event_Control     // leave commented code commented
-    // a dynamic dev process plugin handler
+//     a dynamic dev process plugin handler
 // s_c
-    // events for the  process objecct to bind listeners to 
+//     events for the  process objecct to bind listeners to 
 
 
 // p_Ev_C.ev_rgs event_register
-    // is how the developer will use the object to change their specific funcitons
+//     is how the developer will use the object to change their specific funcitons
 
-    // p_Ev_C.ev_rgs_obj
-      // helps ee ev_rgs do it job
-
-
-    // optional dev restictions
-      // p_Ev_C.ev_rgs.on(   'removeListener'  p_Ev_C.ev_rgs_obj.removeListener_default)
-        //should presever only the given listenerns make sure newListener does not intefere here
-
-      // p_Ev_C.ev_rgs.on(   'newListener'  p_Ev_C.ev_rgs_obj.newListener_default)
-
-              //use to prevent the developer from making accidenal new Listeners and breaking the anything functionality, most likely
-                  // if  p_Ev_C_listen_handle_n_m >>  const_fn_new_help is emitted
-                  // p_Ev_C.ev_rgs_obj.newListener_rgs used to help the ee remove the accident event when its fully attached
-
-              // if p_Ev_C_listen_handle_n_m >>  const_fn_safe is emitted
-              // p_Ev_C.ev_rgs_obj.newListener_interval = {};
-              // contains events, listener, actual      its for setInterval that loses track of what its supposed to be watching  
-                        // .ev_metadata = {}
-                       //  contains events and listener this is sealed so the internal API cannot break its intended functionlaity by removing it s eyes
-
-      // implemet a class and reroute desired functionality the developer can evenutally acess the functionality if they know where to look
-        // this is in const_fn_unsafe
+//     p_Ev_C.ev_rgs_obj
+//       helps ee ev_rgs do it job
 
 
-    //if you leave these functions as constants devs have greater access and can destroy tjem        
+//     optional dev restictions
+//       p_Ev_C.ev_rgs.on(   'removeListener'  p_Ev_C.ev_rgs_obj.removeListener_default)
+//         should presever only the given listenerns make sure newListener does not intefere here
 
-     
-var process_Event_Control = {}
-var p_Ev_C = {}
-p_Ev_C.s_c = {} //figure out how to protect this
-p_Ev_C.ev_rgs_obj = {}
-const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({   
+//       p_Ev_C.ev_rgs.on(   'newListener'  p_Ev_C.ev_rgs_obj.newListener_default)
 
+//               use to prevent the developer from making accidenal new Listeners and breaking the anything functionality, most likely
+//                   if  p_Ev_C_listen_handle_n_m >>  const_fn_new_help is emitted
+//                   p_Ev_C.ev_rgs_obj.newListener_rgs used to help the ee remove the accident event when its fully attached
 
-                          n_m:p_Ev_C_n_m_t_r['p_Ev_C_listen_handle_n_m'],
-                        codes:[      
-                              ['no_const_fn',
-                              function(){        
-                                  p_Ev_C.ev_rgs.on(   'removeListener',function(){
-                                      var dev_obj = {}
-                                      for(var p_Ev_C_0_i =0; p_Ev_C_0_i != arguments.length; p_Ev_C_0_i++ ){
+//               if p_Ev_C_listen_handle_n_m >>  use_setInterval_unstable is emitted
+//               p_Ev_C.ev_rgs_obj.newListener_interval = {};
+//               contains events, listener, actual      its for setInterval that loses track of what its supposed to be watching  
+//                         .ev_metadata = {}
+//                         contains events and listener this is sealed so the internal API cannot break its intended functionlaity by removing it s eyes
 
-                                          
-                                          if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'string'   ){
+//       implemet a class and reroute desired functionality the developer can evenutally acess the functionality if they know where to look
+//         this is in use_class_unknown
 
 
-                                              dev_obj.events = arguments[p_Ev_C_0_i]
+//     if you leave these functions as constants devs have greater access and can destroy them      
 
 
-                                          }
+   
+module.exports = function(   dev_obj   ){
+            var process_Event_Control = {}
+            var p_Ev_C = {}
+            p_Ev_C.dev_obj = dev_obj
+            debugger
+            p_Ev_C.s_c = {} //figure out how to protect this
+            p_Ev_C.ev_rgs_obj = {}
+            const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({   
 
 
-                                          else if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'function'   ){
+                                      n_m:p_Ev_C_n_m_t_r['p_Ev_C_listen_handle_n_m'],
+                                    codes:[      
+                                          ['no_const_fn',
+                                          function(){        
+                                              p_Ev_C.ev_rgs.on(   'removeListener',function(){
+                                                  var dev_obj = {}
+                                                  for(var p_Ev_C_0_i =0; p_Ev_C_0_i != arguments.length; p_Ev_C_0_i++ ){
+
+                                                      
+                                                      if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'string'   ){
 
 
-                                              dev_obj.listener = arguments[p_Ev_C_0_i]
-
-                                              
-                                          }     
+                                                          dev_obj.events = arguments[p_Ev_C_0_i]
 
 
-                                      }
-                                      p_Ev_C.ev_rgs_obj.newListener = p_Ev_C.ev_rgs.rawListeners(   'newListener'   )
-                                      p_Ev_C.ev_rgs.removeAllListeners(   'newListener'   )
-                                      p_Ev_C.ev_rgs.on(   dev_obj.events,dev_obj.listener   )
-                                      p_Ev_C.ev_rgs.on(   'newListener',p_Ev_C.ev_rgs_obj.newListener   )
-                                      delete p_Ev_C.ev_rgs_obj.newListener              
-                                  })
-                                  p_Ev_C.ev_rgs.on(   'newListener', function(){
-                                      var dev_obj = {}
-                                      for(var p_Ev_C_1_i =0; p_Ev_C_1_i != arguments.length; p_Ev_C_1_i++ ){
-
-                                          
-                                          if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'string'   ){
+                                                      }
 
 
-                                              dev_obj.events = arguments[p_Ev_C_1_i]
+                                                      else if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'function'   ){
 
 
-                                          }
+                                                          dev_obj.listener = arguments[p_Ev_C_0_i]
+
+                                                          
+                                                      }     
 
 
-                                          else if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'function'   ){
+                                                  }
+                                                  p_Ev_C.ev_rgs_obj.newListener = p_Ev_C.ev_rgs.rawListeners(   'newListener'   )
+                                                  p_Ev_C.ev_rgs.removeAllListeners(   'newListener'   )
+                                                  p_Ev_C.ev_rgs.on(   dev_obj.events,dev_obj.listener   )
+                                                  p_Ev_C.ev_rgs.on(   'newListener',p_Ev_C.ev_rgs_obj.newListener   )
+                                                  delete p_Ev_C.ev_rgs_obj.newListener              
+                                              })
+                                              p_Ev_C.ev_rgs.on(   'newListener', function(){
+                                                  var dev_obj = {}
+                                                  for(var p_Ev_C_1_i =0; p_Ev_C_1_i != arguments.length; p_Ev_C_1_i++ ){
+
+                                                      
+                                                      if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'string'   ){
 
 
-                                              dev_obj.listener = arguments[p_Ev_C_1_i]
-
-                                              
-                                          }     
+                                                          dev_obj.events = arguments[p_Ev_C_1_i]
 
 
-                                      }  
+                                                      }
 
 
-                                      if(   typeof(   p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   ) =='function'  ){
+                                                      else if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'function'   ){
 
 
-                                          p_Ev_C.ev_rgs_obj.removeListener = p_Ev_C.ev_rgs.rawListeners(   'removeListener'   )
-                                          p_Ev_C.ev_rgs.removeAllListeners(   'removeListener'   )
-                                          p_Ev_C.ev_rgs.off(   dev_obj.events,p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )   
-                                          p_Ev_C.ev_rgs.on(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener   )
-                                          delete p_Ev_C.ev_rgs_obj.removeListener               
+                                                          dev_obj.listener = arguments[p_Ev_C_1_i]
+
+                                                          
+                                                      }     
 
 
-                                      }          
-                                      const p_Ev_C_1_i_n_m = p_Ev_C_node_mode(p_Ev_C_n_m_t_r["p_Ev_C_1_i_n_m"],[[      
-                                                                    'newlist_broken',  //FUNCTIONALITY: when the API cannot remove new events that the dev is trying to attach
-                                                                    function(){        
-                                                                        console.log(arguments)
-                                                                        console.log(dev_obj)
-                                                                        console.log(   "ridiculous"   )                     
-                                                                    }],                                                                                                         
-                                                              ])
-                                      p_Ev_C_1_i_n_m.emit(   p_Ev_C_node_mode_threads[1][0],p_Ev_C_node_mode_threads[1][1]  )        
-                                  })                      
-                              }],
-                              ['const_fn_new_help',
-                              function(){
-                                    p_Ev_C.ev_rgs_obj.removeListener_default = function(){
-                                                                                    var dev_obj = {}
-                                                                                    for(var p_Ev_C_0_i =0; p_Ev_C_0_i != arguments.length; p_Ev_C_0_i++ ){
-
-                                                                                        
-                                                                                        if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'string'   ){
+                                                  }  
 
 
-                                                                                            dev_obj.events = arguments[p_Ev_C_0_i]
+                                                  if(   typeof(   p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   ) =='function'  ){
 
 
-                                                                                        }
+                                                      p_Ev_C.ev_rgs_obj.removeListener = p_Ev_C.ev_rgs.rawListeners(   'removeListener'   )
+                                                      p_Ev_C.ev_rgs.removeAllListeners(   'removeListener'   )
+                                                      p_Ev_C.ev_rgs.off(   dev_obj.events,p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )   
+                                                      p_Ev_C.ev_rgs.on(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener   )
+                                                      delete p_Ev_C.ev_rgs_obj.removeListener               
 
 
-                                                                                        else if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'function'   ){
+                                                  }          
+                                                  const p_Ev_C_1_i_n_m = p_Ev_C_node_mode(p_Ev_C_n_m_t_r["p_Ev_C_1_i_n_m"],[[      
+                                                                                'newlist_broken',  //FUNCTIONALITY: when the API cannot remove new events that the dev is trying to attach
+                                                                                function(){        
+                                                                                    console.log(arguments)
+                                                                                    console.log(dev_obj)
+                                                                                    console.log(   "ridiculous"   )                     
+                                                                                }],                                                                                                         
+                                                                          ])
+                                                  p_Ev_C_1_i_n_m.emit(   p_Ev_C_node_mode_threads[1][0],p_Ev_C_node_mode_threads[1][1]  )        
+                                              })                      
+                                          }],
+                                          ['const_fn_new_help',
+                                          function(){
+                                                p_Ev_C.ev_rgs_obj.removeListener_default = function(){
+                                                                                                var dev_obj = {}
+                                                                                                for(var p_Ev_C_0_i =0; p_Ev_C_0_i != arguments.length; p_Ev_C_0_i++ ){
+
+                                                                                                    
+                                                                                                    if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'string'   ){
 
 
-                                                                                            dev_obj.listener = arguments[p_Ev_C_0_i]
+                                                                                                        dev_obj.events = arguments[p_Ev_C_0_i]
+
+
+                                                                                                    }
+
+
+                                                                                                    else if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'function'   ){
+
+
+                                                                                                        dev_obj.listener = arguments[p_Ev_C_0_i]
+
+                                                                                                        
+                                                                                                    }     
+
+
+                                                                                                }
+                                                                                              
+                                                                                                p_Ev_C.ev_rgs.off(   'newListener',p_Ev_C.ev_rgs_obj.newListener_default   )
+                                                                                                p_Ev_C.ev_rgs.on(   dev_obj.events,dev_obj.listener   )
+                                                                                                p_Ev_C.ev_rgs.on(   'newListener',p_Ev_C.ev_rgs_obj.newListener_default   )
+                                                                                                             
+                                                                                            }
+                                                p_Ev_C.ev_rgs_obj.newListener_default = function(   dev_obj   ){                                                                                
+                                                                                            console.log(   p_Ev_C.ev_rgs   )
+                                                                                            debugger;
+                                                                                            console.log(   dev_obj.events,p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )
+                                                                                            console.log(   typeof(   p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )   )
+                                                                                            console.log(   typeof(   dev_obj.listener   )   )    
 
                                                                                             
-                                                                                        }     
+                                                                                            if(   typeof(   p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   ) =='function'  ){
 
 
-                                                                                    }
-                                                                                  
-                                                                                    p_Ev_C.ev_rgs.off(   'newListener',p_Ev_C.ev_rgs_obj.newListener_default   )
-                                                                                    p_Ev_C.ev_rgs.on(   dev_obj.events,dev_obj.listener   )
-                                                                                    p_Ev_C.ev_rgs.on(   'newListener',p_Ev_C.ev_rgs_obj.newListener_default   )
-                                                                                                 
-                                                                                }
-                                    p_Ev_C.ev_rgs_obj.newListener_default = function(   dev_obj   ){                                                                                
-                                                                                console.log(   p_Ev_C.ev_rgs   )
-                                                                                debugger;
-                                                                                console.log(   dev_obj.events,p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )
-                                                                                console.log(   typeof(   p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )   )
-                                                                                console.log(   typeof(   dev_obj.listener   )   )    
-
-                                                                                
-                                                                                if(   typeof(   p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   ) =='function'  ){
+                                                                                                    p_Ev_C.ev_rgs.off(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   )
+                                                                                                    p_Ev_C.ev_rgs.off(   dev_obj.events,p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )   
+                                                                                                    p_Ev_C.ev_rgs.on(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   ) 
+                                                                                                    debugger                                                                                                  
 
 
-                                                                                        p_Ev_C.ev_rgs.off(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   )
-                                                                                        p_Ev_C.ev_rgs.off(   dev_obj.events,p_Ev_C.ev_rgs.rawListeners(   dev_obj.events   )   )   
-                                                                                        p_Ev_C.ev_rgs.on(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   ) 
-                                                                                        debugger                                                                                                  
-
-
-                                                                                }    
-                                                                                
-
-                                                                                const p_Ev_C_1_i_n_m = p_Ev_C_node_mode(p_Ev_C_n_m_t_r["p_Ev_C_1_i_n_m"],[[      
-                                                                                                              'newlist_broken',  //FUNCTIONALITY: when the API cannot remove new events that the dev is trying to attach
-                                                                                                              function(){        
-                                                                                                                  console.log(arguments)
-                                                                                                                  console.log(dev_obj)
-                                                                                                                  console.log(   "ridiculous"   )   
-                                                                                                                  debugger;                  
-                                                                                                              }],                                                                                                         
-                                                                                                        ])
-                                                                                p_Ev_C_1_i_n_m.emit(   p_Ev_C_node_mode_threads[1][0],p_Ev_C_node_mode_threads[1][1]  ) 
-                                                                                p_Ev_C.ev_rgs.off(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   )
-                                                                                p_Ev_C.ev_rgs.off(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_default)
-                                                                                p_Ev_C.ev_rgs.on(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   ) 
-                                                                                p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_rgs)          
-                                                                            }  
-                                    p_Ev_C.ev_rgs_obj.newListener_rgs = function(){  
-                                                                            console.log(arguments)
-                                                                            var dev_obj = {}                                                                                
-                                                                            for(var p_Ev_C_1_i =0; p_Ev_C_1_i != arguments.length; p_Ev_C_1_i++ ){
-
-                                                                                
-                                                                                if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'string'   ){
-
-
-                                                                                    if(   arguments[p_Ev_C_1_i]  == 'removeListener' &&  arguments[p_Ev_C_1_i+1] == p_Ev_C.ev_rgs_obj.removeListener_default ){
-
-
-                                                                                        // console.log('infinte loop avoided')
-                                                                                        return
-
-
-                                                                                    }
-
-
-                                                                                    dev_obj.events = arguments[p_Ev_C_1_i]
-
-
-                                                                                }
-
-
-                                                                                else if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'function'   ){
-
-
-                                                                                    dev_obj.listener = arguments[p_Ev_C_1_i]
-
-                                                                                    
-                                                                                }     
-
-
-                                                                            }                                                                            
-                                                                            debugger;
-                                                                            p_Ev_C.ev_rgs.off(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   )                                                                          
-                                                                            p_Ev_C.ev_rgs.off(   'newListener' ,p_Ev_C.ev_rgs_obj.newListener_rgs   )
-                                                                            p_Ev_C.ev_rgs.on(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   )
-                                                                            p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_default   )
-                                                                            // process.nextTick(() =>{
-                                                                                p_Ev_C.ev_rgs.emit(   'newListener' , dev_obj   )                                                                             
-                                                                            // })
-                                                                        }                                                                                                          
-                                    p_Ev_C.ev_rgs.on(   'removeListener',  p_Ev_C.ev_rgs_obj.removeListener_default)
-                                    p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_rgs)                                    
-                              }],  
-                              ['const_fn_unsafe',
-                              function(){
-                                    class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {
-                                        constructor(){
-                                          super()  
-                                        }
-
-                                        p_Ev_C_Emitter_warn(){
-                                            process.emitWarning('accessing low level process management', {
-                                                code: 'process_Event_Control Warning',
-                                                detail: 'Hardware resources will be severly compromised if accesed',
-                                                ctor:function(){}
-                                            });  
-                                        }
-
-                                        get on(){                                                                                        
-                                              this.p_Ev_C_Emitter_warn()                                              
-                                            // not working for some reason not sure if placing in a function is safe becuas of sync async                                                                                 
-                                        }    
-                                        get once(){                                                                                        
-                                              this.p_Ev_C_Emitter_warn()                                                                                                                                                                             
-                                        }                                          
-                                        get addListener(){
-                                              this.p_Ev_C_Emitter_warn()
-                                        }
-                                        get prependListener(){
-                                              this.p_Ev_C_Emitter_warn()
-                                        } 
-                                        get prependOnceListener(){
-                                              this.p_Ev_C_Emitter_warn()
-                                        }  
-                                        get off(){
-                                              this.p_Ev_C_Emitter_warn()
-                                        }  
-                                        get removeListener(){
-                                              this.p_Ev_C_Emitter_warn()
-                                        }
-                                        get removeAllListeners(){
-                                              this.p_Ev_C_Emitter_warn() 
-                                        }                                                                                                                     
-                                        get snufjet(){
-                                            return this.__proto__.__proto__.addListener
-                                        }
-                                        get promptfan(){
-                                            return this.__proto__.__proto__.once
-                                            // cant use this it uses the above prototype
-                                        }
-                                        get tjet(){
-                                            return this.__proto__.__proto__.prependListener
-                                        }
-                                        get diptuck(){
-                                            return this.__proto__.__proto__.prependOnceListener
-                                            // camt use this it uses the above prototypes
-                                        }
-                                        get niscom(){
-                                            return this.__proto__.__proto__.removeListener
-                                        }
-                                        get aoki(){
-                                            return this.__proto__.__proto__.removeAllListeners
-                                            // cant use this it uses the above prototypes
-                                        }
- 
-                                    }         
-                                    p_Ev_C.ev_rgs = new p_Ev_C_Emitter()                                    
-                               
-                              }],
-                              ['const_fn_safe',
-                              function(){
-                                    class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {}
-                                    p_Ev_C.ev_rgs = new p_Ev_C_Emitter() 
-                                    p_Ev_C.ev_rgs_obj.removeListener_default = function(){
-                                                                                    var dev_obj = {}
-                                                                                    for(var p_Ev_C_0_i =0; p_Ev_C_0_i != arguments.length; p_Ev_C_0_i++ ){
-
-                                                                                        
-                                                                                        if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'string'   ){
-
-
-                                                                                            dev_obj.events = arguments[p_Ev_C_0_i]
-
-
-                                                                                        }
-
-
-                                                                                        else if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'function'   ){
-
-
-                                                                                            dev_obj.listener = arguments[p_Ev_C_0_i]
-
+                                                                                            }    
                                                                                             
-                                                                                        }     
 
-
-                                                                                    }
-                                                                                  
-                                                                                    p_Ev_C.ev_rgs.off(   'newListener',p_Ev_C.ev_rgs_obj.newListener_default   )
-                                                                                    p_Ev_C.ev_rgs.on(   dev_obj.events,dev_obj.listener   )
-                                                                                    p_Ev_C.ev_rgs.on(   'newListener',p_Ev_C.ev_rgs_obj.newListener_default   )
-                                                                                                 
-                                                                                }
-                                    p_Ev_C.ev_rgs_obj.newListener_interval = {};
-                                    p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata = {}
-                                    // contains events, listener, actual
-                                    p_Ev_C.ev_rgs_obj.newListener_default = function(){        
-                                                                                var dev_obj = {}                                                                                
-                                                                                for(var p_Ev_C_1_i =0; p_Ev_C_1_i != arguments.length; p_Ev_C_1_i++ ){
-
-                                                                                    
-                                                                                    if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'string'   ){
-
-
-                                                                                        if(   arguments[p_Ev_C_1_i]  == 'removeListener' &&  arguments[p_Ev_C_1_i+1] == p_Ev_C.ev_rgs_obj.removeListener_default ){
-
-
-                                                                                            // console.log('infinte loop avoided')
-                                                                                            return
-
-
-                                                                                        }
-
-
-                                                                                        dev_obj.events = arguments[p_Ev_C_1_i]
-
-
-                                                                                    }
-
-
-                                                                                    else if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'function'   ){
-
-
-                                                                                        dev_obj.listener = arguments[p_Ev_C_1_i]
-
-                                                                                        
-                                                                                    }     
-
-
-                                                                                }                                                                                                              
-                                                                                debugger;
-                                                                                dev_obj.listener_type = typeof(   dev_obj.listener   )  
-
-                                                                                
-                                                                                if(   dev_obj.listener_type.match(   'function'   ) != -1  ){
-                                                                                    // three ways setImmediate, setInterval or process.nextTick
-                                                                                    p_Ev_C.ev_rgs_obj.newListener_interval.events               = dev_obj.events
-                                                                                    p_Ev_C.ev_rgs_obj.newListener_interval.listener             = dev_obj.listener  
-
-
-                                                                                    if(   !Object.isSealed(   p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata   )   ){
-
-
-                                                                                        p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata.events   = dev_obj.events
-                                                                                        p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata.listener = dev_obj.listener  
-
-
-                                                                                    }
-
-
-                                                                                    p_Ev_C.ev_rgs_obj.newListener_interval.actual   = setInterval(() =>{
-                                                                                        
-
-                                                                                        if(   p_Ev_C.ev_rgs._events[p_Ev_C.ev_rgs_obj.newListener_interval.events] !=undefined   ){
-
-
-                                                                                            p_Ev_C.ev_rgs.off(   p_Ev_C.ev_rgs_obj.newListener_interval.events    ,   p_Ev_C.ev_rgs_obj.newListener_interval.listener    )
-                                                                                            clearInterval(   p_Ev_C.ev_rgs_obj.newListener_interval.actual   )
-                                                                                        
+                                                                                            const p_Ev_C_1_i_n_m = p_Ev_C_node_mode(p_Ev_C_n_m_t_r["p_Ev_C_1_i_n_m"],[[      
+                                                                                                                          'newlist_broken',  //FUNCTIONALITY: when the API cannot remove new events that the dev is trying to attach
+                                                                                                                          function(){        
+                                                                                                                              console.log(arguments)
+                                                                                                                              console.log(dev_obj)
+                                                                                                                              console.log(   "ridiculous"   )   
+                                                                                                                              debugger;                  
+                                                                                                                          }],                                                                                                         
+                                                                                                                    ])
+                                                                                            p_Ev_C_1_i_n_m.emit(   p_Ev_C_node_mode_threads[1][0],p_Ev_C_node_mode_threads[1][1]  ) 
+                                                                                            p_Ev_C.ev_rgs.off(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   )
+                                                                                            p_Ev_C.ev_rgs.off(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_default)
+                                                                                            p_Ev_C.ev_rgs.on(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   ) 
+                                                                                            p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_rgs)          
                                                                                         }  
+                                                p_Ev_C.ev_rgs_obj.newListener_rgs = function(){  
+                                                                                        console.log(arguments)
+                                                                                        var dev_obj = {}                                                                                
+                                                                                        for(var p_Ev_C_1_i =0; p_Ev_C_1_i != arguments.length; p_Ev_C_1_i++ ){
 
-                                                                                        
-                                                                                        console.log("am I trying to clear it ")
-                                                                                    },0)
-                                                                                    Object.seal(   p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata   )
-
-                                                                                }    
-                                                                                
-                                                                                
-                                                                                const p_Ev_C_1_i_n_m = p_Ev_C_node_mode(p_Ev_C_n_m_t_r["p_Ev_C_1_i_n_m"],[[      
-                                                                                                              'newlist_broken',  //FUNCTIONALITY: when the API cannot remove new events that the dev is trying to attach
-                                                                                                              function(){        
-                                                                                                                  console.log(arguments)
-                                                                                                                  console.log(dev_obj)
-                                                                                                                  console.log(   "ridiculous"   )   
-                                                                                                                  debugger;                  
-                                                                                                              }],  
-                                                                                                              ['prevent',  
-                                                                                                              function(){                         
-                                                                                                              }],                                                                                                                                                                                                                        
-                                                                                                        ])
-                                                                                p_Ev_C_1_i_n_m.emit(   p_Ev_C_node_mode_threads[1][0],p_Ev_C_node_mode_threads[1][1]  )         
-                                                                            }                                                                                                                                                    
-                                    // p_Ev_C.ev_rgs.on(   'removeListener',  p_Ev_C.ev_rgs_obj.removeListener_default)
-                                    p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_default)  
-                                    // delete p_Ev_C.ev_rgs.__proto__.addListener   
-                                    // delete p_Ev_C.ev_rgs.__proto__.on    
-                                    // delete p_Ev_C.ev_rgs.__proto__.once   
-                                    // delete p_Ev_C.ev_rgs.__proto__.prependListener   
-                                    // delete p_Ev_C.ev_rgs.__proto__.prependOnceListener                                                                                                                                                                                           
-
-                              }],                                                            
-                              ['C',
-                              function(){
-                                  //async version of above     
-                                  // my problem here is that the newListener listener beats the on events in the async event so it cannot remove
-                                  // added listneners                                         
-                              }],  
-                              ['D',
-                              function(){
-                                  //async version of above                                              
-                              }],
-                              ],
-              node_mode_async:{
-                                  'no_const_fn'      :'sync',
-                                  'const_fn_new_help':'sync',
-                                  'const_fn_unsafe'  :'sync',
-                                  'const_fn_safe'    :'sync',
-                                  'C'                :'async',
-                                  'D'                :'async'
-                              }                                                                                                                                                                 
-                        }) 
-debugger;
-p_Ev_C_listen_handle_n_m.emit(   p_Ev_C_node_mode_threads[0][0],p_Ev_C_node_mode_threads[0][1]   )
-// cant use _events.newListener.listener or .rawListeners(   'newListener'   ) to take it out from  in a  REPL
-// cant take out in the module itself
-// p_Ev_C.ev_rgs.off(   'newListener',p_Ev_C.ev_rgs.rawListeners(   'newListener'   )   )
-debugger;
-p_Ev_C.ev_rgs.on("a", function(){console.log(3)})     
-Object.seal(   p_Ev_C   )
-module.exports = p_Ev_C
-// process.exit() 
-// process_uncaughtException.message = ''
-// process_uncaughtException.open_items = []
-// process_uncaughtException.handler = function(   dev_obj   ){
-//     open_items  =  dev_obj.open_items               
-//     process.on('exit',(code) =>{
-//         console.log(   process_uncaughtException.message,code   )    
-//         Error.stack != undefined ? console.log(Error.stack) : console.log('trying to show you the error')
-//     })    
-//     for (var open_items_i = open_items.length - 1; open_items_i >= 0; open_items_i--) {
-//         // console.log(open_items[open_items_i][1])
-
-//         if(   process_uncaughtException[open_items[open_items_i][0]]!= undefined   ){
+                                                                                            
+                                                                                            if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'string'   ){
 
 
-//             process_uncaughtException[open_items[open_items_i][0]](   open_items[open_items_i][1]   )
+                                                                                                if(   arguments[p_Ev_C_1_i]  == 'removeListener' &&  arguments[p_Ev_C_1_i+1] == p_Ev_C.ev_rgs_obj.removeListener_default ){
 
 
-//         }    
+                                                                                                    // console.log('infinte loop avoided')
+                                                                                                    return
 
 
-//         else{
+                                                                                                }
 
 
-//             console.log(   'the open object assoicated with' + open_items[open_items_i][1]   + ' a ' + open_items[open_items_i][0] + 'was left open, \
-//                 close this yourself, to \
-//                 avoid this in the future register the open object type as the function name to this object and it must be exact ')
+                                                                                                dev_obj.events = arguments[p_Ev_C_1_i]
 
 
-//         }      
+                                                                                            }
 
 
-//     }
-//     dev_obj.exit_callback() 
-// }       
-
-// process.on('uncaughtException',(err)=>{
-//     console.error(   err   )
-//     process_uncaughtException.handler({
-//                                         open_items: process_uncaughtException.open_items,
-//                                         exit_callback: function(){process.exit()}
-//                                       })
-// })
+                                                                                            else if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'function'   ){
 
 
-// module.exports = process_uncaughtException
+                                                                                                dev_obj.listener = arguments[p_Ev_C_1_i]
+
+                                                                                                
+                                                                                            }     
+
+
+                                                                                        }                                                                            
+                                                                                        debugger;
+                                                                                        p_Ev_C.ev_rgs.off(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   )                                                                          
+                                                                                        p_Ev_C.ev_rgs.off(   'newListener' ,p_Ev_C.ev_rgs_obj.newListener_rgs   )
+                                                                                        p_Ev_C.ev_rgs.on(   'removeListener',p_Ev_C.ev_rgs_obj.removeListener_default   )
+                                                                                        p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_default   )
+                                                                                        // process.nextTick(() =>{
+                                                                                            p_Ev_C.ev_rgs.emit(   'newListener' , dev_obj   )                                                                             
+                                                                                        // })
+                                                                                    }                                                                                                          
+                                                p_Ev_C.ev_rgs.on(   'removeListener',  p_Ev_C.ev_rgs_obj.removeListener_default)
+                                                p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_rgs)                                    
+                                          }],  
+                                          ['use_class_stable',
+                                          function(){
+                                                class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {
+                                                    constructor(){
+                                                      super()  
+                                                    }
+                                                    p_Ev_C_Emitter_warn(){
+                                                        process.emitWarning('accessing low level process management', {
+                                                            code: 'process_Event_Control Warning',
+                                                            detail: 'Hardware resources will be severly compromised if accesed',
+                                                            ctor:function(){}
+                                                        });  
+                                                    }
+                                                    get on(){                                                                                        
+                                                          this.p_Ev_C_Emitter_warn()                                              
+                                                        // not working for some reason not sure if placing in a function is safe becuas of sync async                                                                                 
+                                                    }    
+                                                    get once(){                                                                                        
+                                                          this.p_Ev_C_Emitter_warn()                                                                                                                                                                             
+                                                    }                                          
+                                                    get addListener(){
+                                                          this.p_Ev_C_Emitter_warn()
+                                                    }
+                                                    get prependListener(){
+                                                          this.p_Ev_C_Emitter_warn()
+                                                    } 
+                                                    get prependOnceListener(){
+                                                          this.p_Ev_C_Emitter_warn()
+                                                    }  
+                                                    get off(){
+                                                          this.p_Ev_C_Emitter_warn()
+                                                    }  
+                                                    get removeListener(){
+                                                          this.p_Ev_C_Emitter_warn()
+                                                    }
+                                                    get removeAllListeners(){
+                                                          this.p_Ev_C_Emitter_warn() 
+                                                    }                                                                                                                     
+                                                    get snufjet(){
+                                                        return this.__proto__.__proto__.addListener
+                                                    }
+                                                    get promptfan(){
+                                                        return this.__proto__.__proto__.once
+                                                        // cant use this it uses the above prototype
+                                                    }
+                                                    get tjet(){
+                                                        return this.__proto__.__proto__.prependListener
+                                                    }
+                                                    get diptuck(){
+                                                        return this.__proto__.__proto__.prependOnceListener
+                                                        // camt use this it uses the above prototypes
+                                                    }
+                                                    get niscom(){
+                                                        return this.__proto__.__proto__.removeListener
+                                                    }
+                                                    get aoki(){
+                                                        return this.__proto__.__proto__.removeAllListeners
+                                                        // cant use this it uses the above prototypes
+                                                    }
+             
+                                                }         
+                                                p_Ev_C.ev_rgs = new p_Ev_C_Emitter()
+
+                                                // p_Ev_C.ev_rgs.snufjet(   "a_p_e",   )                             
+                                                
+                                          }],
+                                          ['use_setInterval_unstable',
+                                          function(){
+                                                // // this can only handle one on implementation  and much precautions must be put in place to prevent it from
+                                                // self corrupting or doing unauthorized things also there is the sync async problem that makes this solution ineffective
+                                                class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {}
+                                                p_Ev_C.ev_rgs = new p_Ev_C_Emitter() 
+                                                p_Ev_C.ev_rgs_obj.removeListener_default = function(){
+                                                                                                var dev_obj = {}
+                                                                                                for(var p_Ev_C_0_i =0; p_Ev_C_0_i != arguments.length; p_Ev_C_0_i++ ){
+
+                                                                                                    
+                                                                                                    if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'string'   ){
+
+
+                                                                                                        dev_obj.events = arguments[p_Ev_C_0_i]
+
+
+                                                                                                    }
+
+
+                                                                                                    else if(   typeof(   arguments[p_Ev_C_0_i]   ) == 'function'   ){
+
+
+                                                                                                        dev_obj.listener = arguments[p_Ev_C_0_i]
+
+                                                                                                        
+                                                                                                    }     
+
+
+                                                                                                }
+                                                                                              
+                                                                                                p_Ev_C.ev_rgs.off(   'newListener',p_Ev_C.ev_rgs_obj.newListener_default   )
+                                                                                                p_Ev_C.ev_rgs.on(   dev_obj.events,dev_obj.listener   )
+                                                                                                p_Ev_C.ev_rgs.on(   'newListener',p_Ev_C.ev_rgs_obj.newListener_default   )
+                                                                                                             
+                                                                                            }
+                                                p_Ev_C.ev_rgs_obj.newListener_interval = {};
+                                                p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata = {}
+                                                // contains events, listener, actual
+                                                p_Ev_C.ev_rgs_obj.newListener_default = function(){     
+
+                                                                                            var dev_obj = {}                                                                                
+                                                                                            for(var p_Ev_C_1_i =0; p_Ev_C_1_i != arguments.length; p_Ev_C_1_i++ ){
+
+                                                                                                
+                                                                                                if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'string'   ){
+
+
+                                                                                                    if(   arguments[p_Ev_C_1_i]  == 'removeListener' &&  arguments[p_Ev_C_1_i+1] == p_Ev_C.ev_rgs_obj.removeListener_default ){
+
+
+                                                                                                        // console.log('infinte loop avoided')
+                                                                                                        return
+
+
+                                                                                                    }
+
+
+                                                                                                    dev_obj.events = arguments[p_Ev_C_1_i]
+
+
+                                                                                                }
+
+
+                                                                                                else if(   typeof(   arguments[p_Ev_C_1_i]   ) == 'function'   ){
+
+
+                                                                                                    dev_obj.listener = arguments[p_Ev_C_1_i]
+
+                                                                                                    
+                                                                                                }     
+
+
+                                                                                            }                                                                                                              
+                                                                                            debugger;
+                                                                                            dev_obj.listener_type = typeof(   dev_obj.listener   )  
+
+                                                                                            
+                                                                                            if(   dev_obj.listener_type.match(   'function'   ) != -1  ){
+                                                                                                // three ways setImmediate, setInterval or process.nextTick
+                                                                                                p_Ev_C.ev_rgs_obj.newListener_interval.events               = dev_obj.events
+                                                                                                p_Ev_C.ev_rgs_obj.newListener_interval.listener             = dev_obj.listener  
+
+
+                                                                                                if(   !Object.isSealed(   p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata   )   ){
+
+
+                                                                                                    p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata.events   = dev_obj.events
+                                                                                                    p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata.listener = dev_obj.listener  
+
+
+                                                                                                }
+
+
+                                                                                                p_Ev_C.ev_rgs_obj.newListener_interval.actual   = setInterval(() =>{
+                                                                                                    
+
+                                                                                                    if(   p_Ev_C.ev_rgs._events[p_Ev_C.ev_rgs_obj.newListener_interval.events] !=undefined   ){
+
+
+                                                                                                        p_Ev_C.ev_rgs.off(   p_Ev_C.ev_rgs_obj.newListener_interval.events    ,   p_Ev_C.ev_rgs_obj.newListener_interval.listener    )
+                                                                                                        clearInterval(   p_Ev_C.ev_rgs_obj.newListener_interval.actual   )
+                                                                                                    
+                                                                                                    }  
+
+                                                                                                    
+                                                                                                    console.log("am I trying to clear it ")
+                                                                                                },0)
+                                                                                                Object.seal(   p_Ev_C.ev_rgs_obj.newListener_interval.ev_metadata   )
+
+                                                                                            }    
+                                                                                            
+                                                                                            
+                                                                                            const p_Ev_C_1_i_n_m = p_Ev_C_node_mode(p_Ev_C_n_m_t_r["p_Ev_C_1_i_n_m"],[[      
+                                                                                                                          'newlist_broken',  //FUNCTIONALITY: when the API cannot remove new events that the dev is trying to attach
+                                                                                                                          function(){        
+                                                                                                                              console.log(arguments)
+                                                                                                                              console.log(dev_obj)
+                                                                                                                              console.log(   "ridiculous"   )   
+                                                                                                                              debugger;                  
+                                                                                                                          }],  
+                                                                                                                          ['prevent',  
+                                                                                                                          function(){                         
+                                                                                                                          }],                                                                                                                                                                                                                        
+                                                                                                                    ])
+                                                                                            p_Ev_C_1_i_n_m.emit(   p_Ev_C_node_mode_threads[1][0],p_Ev_C_node_mode_threads[1][1]  )         
+                                                                                        }                                                                                                                                                    
+                                                // p_Ev_C.ev_rgs.on(   'removeListener',  p_Ev_C.ev_rgs_obj.removeListener_default)
+                                                p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_default)  
+                                                // delete p_Ev_C.ev_rgs.__proto__.addListener   
+                                                // delete p_Ev_C.ev_rgs.__proto__.on    
+                                                // delete p_Ev_C.ev_rgs.__proto__.once   
+                                                // delete p_Ev_C.ev_rgs.__proto__.prependListener   
+                                                // delete p_Ev_C.ev_rgs.__proto__.prependOnceListener                                                                                                                                                                                           
+
+                                          }],                                                            
+                                          ['C',
+                                          function(){
+                                              //async version of above     
+                                              // my problem here is that the newListener listener beats the on events in the async event so it cannot remove
+                                              // added listneners                                         
+                                          }],  
+                                          ['D',
+                                          function(){
+                                              //async version of above                                              
+                                          }],
+                                          ],
+                          node_mode_async:{
+                                              'no_const_fn'                 :'sync',
+                                              'const_fn_new_help'           :'sync',
+                                              'use_class_stable'            :'async',
+                                              'use_setInterval_unstable'    :'sync',
+                                              'C'                           :'async',
+                                              'D'                           :'async'
+                                          },  
+                       node_mode_metadata: p_Ev_C.dev_obj.p_Ev_C_listen_handle_n_m,
+                               custom_dev:{
+                                            gen_ans:'total'
+                                          }                                                                                                                                                                                
+                                    })         
+            p_Ev_C_listen_handle_n_m.emit(   p_Ev_C_node_mode_threads[0][0],p_Ev_C_node_mode_threads[0][1]   )
+            Object.seal(   p_Ev_C   )
+            // cant use _events.newListener.listener or .rawListeners(   'newListener'   ) to take it out from  in a  REPL
+            // cant take out in the module itself
+            // p_Ev_C.ev_rgs.on("a", function(){console.log(3)})              
+            return p_Ev_C
+}

@@ -7,8 +7,8 @@
                             ['test',      'add_listener'         ],                            
                           ],
                         "process_Event_Control.js":[
-                            ['test',      'const_fn_safe'              ],
-                            ['test',      'prevent'                    ]                            
+                            ['test',      'use_class_stable'              ],
+                            ['test',      'prevent'                       ]                            
                           ]                           
                     }
 
@@ -16,13 +16,13 @@
 
 module.exports.n_m_t_registry = {
                                     break_p_Ev_C_n_m:[['test',
-                                                        ['use_raw','use_props','just_require','add_no_obj_listener','add_listener']
+                                                        ['use_raw','use_props','just_require','no_metadata','add_listener']
                                                       ]],                                                                                                                                                          
                                     p_Ev_C_1_i_n_m  : [['test',
                                                         ['newlist_broken','prevent']
                                                       ]],                                                                                                      
                           p_Ev_C_listen_handle_n_m :  [['test',
-                                                        ['const_fn_safe','const_fn_unsafe','no_const_fn','const_fn_new_help']
+                                                        ['use_setInterval_unstable','use_class_stable','no_const_fn','const_fn_new_help']
                                                       ],                                                                                                     
                                                       ['listen_init',
                                                         ['const_fn','no_const_fn']
