@@ -8,7 +8,7 @@
                           ],
                         "process_Event_Control.js":[
                             ['test',      'const_fn'                   ],
-                            ['test',      'newlist_broken'             ]                            
+                            ['test',      ''                           ]                            
                           ]                           
                     }
 
@@ -16,13 +16,13 @@
 
 module.exports.n_m_t_registry = {
                                     break_p_Ev_C_n_m:[['test',
-                                                        ['use_raw','use_props','just_require','add_no_obj_listener']
+                                                        ['use_raw','use_props','just_require','add_no_obj_listener','add_listener']
                                                       ]],                                                                                                                                                          
                                     p_Ev_C_1_i_n_m  : [['test',
                                                         ['newlist_broken','']
                                                       ]],                                                                                                      
                           p_Ev_C_listen_handle_n_m :  [['test',
-                                                        ['const_fn','no_const_fn','const_fn_new_help']
+                                                        ['const_fn_unsafe','no_const_fn','const_fn_new_help']
                                                       ],                                                                                                     
                                                       ['listen_init',
                                                         ['const_fn','no_const_fn']

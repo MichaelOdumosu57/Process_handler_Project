@@ -18,17 +18,25 @@ const p_Ev_C_node_mode_threads       =  n_API.API_n_c.API_node_mode.node_mode_th
                                                                                 calling_file:__filename.split("/")[__filename.split("/").length-1]
                                                                               })
 const p_Ev_C_n_m_t_r                 =  n_API.API_n_c.API_node_mode.n_m_t_r
-const p_Ev_C_Emitter                 =  n_API.API_n_b_p.events.EventEmitter
-// class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {
+const p_Ev_C_EventEmitter            =  n_API.API_n_b_p.events.EventEmitter
+class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {
 
-//   constructor(){
-//     super()
-//     this
+  constructor(){
+    super()  
+  }
 
-//   }
-// }
-// e = new p_Ev_C_Emitter()
-// debugger
+  get  on(){
+      console.log('cant do it ')
+  }
+
+                                    // delete p_Ev_C.ev_rgs.__proto__.addListener   
+                                    // delete p_Ev_C.ev_rgs.__proto__.on    
+                                    // delete p_Ev_C.ev_rgs.__proto__.once   
+                                    // delete p_Ev_C.ev_rgs.__proto__.prependListener   
+                                    // delete p_Ev_C.ev_rgs.__proto__.prependOnceListener      
+}
+e = new p_Ev_C_Emitter()
+debugger
 
 // process_uncaughtException.message
     //message to for dev to tell self when the process completes everything
@@ -280,7 +288,7 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
                                     p_Ev_C.ev_rgs.on(   'removeListener',  p_Ev_C.ev_rgs_obj.removeListener_default)
                                     p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_rgs)                                    
                               }],  
-                              ['const_fn',
+                              ['const_fn_unsafe',
                               function(){
                                     p_Ev_C.ev_rgs_obj.removeListener_default = function(){
                                                                                     var dev_obj = {}
@@ -378,11 +386,11 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
                                                                             }                                                                                                                                                    
                                     p_Ev_C.ev_rgs.on(   'removeListener',  p_Ev_C.ev_rgs_obj.removeListener_default)
                                     p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_default)  
-                                    p_Ev_C.ev_rgs.__proto__.__proto__.addListener   = null
-                                    p_Ev_C.ev_rgs.__proto__.__proto__.on   = null 
-                                    p_Ev_C.ev_rgs.__proto__.__proto__.once   = null
-                                    p_Ev_C.ev_rgs.__proto__.__proto__.prependListener   = null
-                                    p_Ev_C.ev_rgs.__proto__.__proto__.prependOnceListener   = null                                                                                                                                                                                        
+                                    // delete p_Ev_C.ev_rgs.__proto__.addListener   
+                                    // delete p_Ev_C.ev_rgs.__proto__.on    
+                                    // delete p_Ev_C.ev_rgs.__proto__.once   
+                                    // delete p_Ev_C.ev_rgs.__proto__.prependListener   
+                                    // delete p_Ev_C.ev_rgs.__proto__.prependOnceListener                                                                                                                                                                                           
 
                               }],                              
                               ['C',
@@ -399,17 +407,18 @@ const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({
               node_mode_async:{
                                   'no_const_fn'      :'sync',
                                   'const_fn_new_help':'sync',
-                                  'const_fn'         :'sync',
+                                  'const_fn_unsafe'  :'sync',
                                   'C'                :'async',
                                   'D'                :'async'
                               }                                                                                                                                                                 
                         }) 
+debugger;
 p_Ev_C_listen_handle_n_m.emit(   p_Ev_C_node_mode_threads[0][0],p_Ev_C_node_mode_threads[0][1]   )
 // cant use _events.newListener.listener or .rawListeners(   'newListener'   ) to take it out from  in a  REPL
 // cant take out in the module itself
 // p_Ev_C.ev_rgs.off(   'newListener',p_Ev_C.ev_rgs.rawListeners(   'newListener'   )   )
-p_Ev_C.ev_rgs.on("a", function(){console.log(3)})     
 debugger;
+p_Ev_C.ev_rgs.on("a", function(){console.log(3)})     
 Object.seal(   p_Ev_C   )
 module.exports = p_Ev_C
 // process.exit() 
