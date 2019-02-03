@@ -16,7 +16,7 @@
 
 module.exports.n_m_t_registry = {
                                     break_p_Ev_C_n_m:[['test',
-                                                        ['use_raw','use_props','just_require','no_metadata','emit_listener']
+                                                        ['use_raw','use_props','just_require','no_metadata','emit_listener','call_method']
                                                       ]],                                                                                                                                                          
                                     p_Ev_C_1_i_n_m  : [['test',
                                                         ['newlist_broken','prevent']

@@ -145,7 +145,7 @@ to see it in practice
 
 const node_mode_threads_files = {
                         "template.js":[
-                            ['test',      'add_listener'         ],                            
+                            ['test',      'emit_listener'         ],                            
                           ],
                         "process_Event_Control.js":[
                             ['test',      'use_setInterval_unstable'   ],
@@ -154,6 +154,22 @@ const node_mode_threads_files = {
                     }   
 
 
+to see it add listeners by calling a method
+ node_mode_threads_files = {
+                        "template.js":[
+                            ['test',      'call_method'                 ],                            
+                          ],
+                        "process_Event_Control.js":[
+                            ['test',      'use_class_stable'              ],
+                            ['test',      'prevent'                       ]                            
+                          ]                           
+                    }
+
+make sure 
+                           node_mode_args:{
+                                              appender:'method'
+                                          }
+                            for p_Ev_C_listen_handle_n_m is applied                    
 
 to see the process_Event_Control reject the rawListener attack
 
@@ -209,4 +225,5 @@ const node_mode_threads_files = {
                             ['test',      'prevent'                    ]                            
                           ]                           
                     }                    
+
 

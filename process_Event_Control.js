@@ -35,8 +35,7 @@ function p_Ev_C_constructor (   dev_obj   ){
                   for(   var p_Ev_C_2_i =0; p_Ev_C_2_i != Object.entries(   dev_obj   ).length ; p_Ev_C_2_i++ ){
                       // console.log(   Object.entries(   dev_obj   )[p_Ev_C_2_i]   )
                       p_Ev_C.s_c.event_name = Object.keys(   dev_obj   )[p_Ev_C_2_i]
-                      p_Ev_C.s_c.actual     = Object.entries(   Object.entries(   dev_obj   )[p_Ev_C_2_i][1]   )   
-                      debugger                       
+                      p_Ev_C.s_c.actual     = Object.entries(   Object.entries(   dev_obj   )[p_Ev_C_2_i][1]   )                                              
                       for(   var p_Ev_C_3_i =0; p_Ev_C_3_i != p_Ev_C.s_c.actual.length; p_Ev_C_3_i++){          
 
 
@@ -48,7 +47,7 @@ function p_Ev_C_constructor (   dev_obj   ){
 
                           }      
 
-                                    
+
                           process[p_Ev_C.s_c.actual[p_Ev_C_3_i][1].append_type](   p_Ev_C.s_c.event_name,   p_Ev_C_a_l({
                                                                                     listener_function:p_Ev_C.s_c.actual[p_Ev_C_3_i][1].execute,
                                                                                     sync             :p_Ev_C.s_c.actual[p_Ev_C_3_i][1].sync
@@ -64,9 +63,11 @@ function p_Ev_C_constructor (   dev_obj   ){
 
                       // process.on(   Object.keys(   dev_obj   )[p_Ev_C_2_i],   )
                   }                  
-            }            
-            const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({   
-
+            }
+            const p_Ev_C_listen_handle_n_m_obj = {   
+                           node_mode_args:{
+                                              appender:'emitter'
+                                          },
                                       n_m:p_Ev_C_n_m_t_r['p_Ev_C_listen_handle_n_m'],
                                     codes:{      
                                             'no_const_fn':
@@ -264,68 +265,83 @@ function p_Ev_C_constructor (   dev_obj   ){
                                                   p_Ev_C.ev_rgs.on(   'newListener' , p_Ev_C.ev_rgs_obj.newListener_rgs)                                    
                                             },  
                                             'use_class_stable':
-                                            function(){                                                  
-                                                  class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {
-                                                      constructor(){
-                                                        super()  
-                                                      }
-                                                      p_Ev_C_Emitter_warn(){
-                                                          process.emitWarning('accessing low level process management', {
-                                                              code: 'process_Event_Control Warning',
-                                                              detail: 'Hardware resources will be severly compromised if accesed',
-                                                              ctor:function(){}
-                                                          });  
-                                                      }
-                                                      get on(){                                                                                        
-                                                            this.p_Ev_C_Emitter_warn()                                              
-                                                          // not working for some reason not sure if placing in a function is safe becuas of sync async                                                                                 
-                                                      }    
-                                                      get once(){                                                                                        
-                                                            this.p_Ev_C_Emitter_warn()                                                                                                                                                                             
-                                                      }                                          
-                                                      get addListener(){
-                                                            this.p_Ev_C_Emitter_warn()
-                                                      }
-                                                      get prependListener(){
-                                                            this.p_Ev_C_Emitter_warn()
-                                                      } 
-                                                      get prependOnceListener(){
-                                                            this.p_Ev_C_Emitter_warn()
-                                                      }  
-                                                      get off(){
-                                                            this.p_Ev_C_Emitter_warn()
-                                                      }  
-                                                      get removeListener(){
-                                                            this.p_Ev_C_Emitter_warn()
-                                                      }
-                                                      get removeAllListeners(){
-                                                            this.p_Ev_C_Emitter_warn() 
-                                                      }                                                                                                                     
-                                                      get snufjet(){
-                                                          return this.__proto__.__proto__.addListener
-                                                      }
-                                                      get promptfan(){
-                                                          return this.__proto__.__proto__.once
-                                                          // cant use this it uses the above prototype
-                                                      }
-                                                      get tjet(){
-                                                          return this.__proto__.__proto__.prependListener
-                                                      }
-                                                      get diptuck(){
-                                                          return this.__proto__.__proto__.prependOnceListener
-                                                          // camt use this it uses the above prototypes
-                                                      }
-                                                      get niscom(){
-                                                          return this.__proto__.__proto__.removeListener
-                                                      }
-                                                      get aoki(){
-                                                          return this.__proto__.__proto__.removeAllListeners
-                                                          // cant use this it uses the above prototypes
-                                                      }
-               
-                                                  }                                                           
-                                                  p_Ev_C.ev_rgs = new p_Ev_C_Emitter()                                                 
-                                                  p_Ev_C.ev_rgs.snufjet(   "p_Ev_i",p_Ev_i   )                             
+                                            function(){                        
+                                                  if(    p_Ev_C_listen_handle_n_m_obj.node_mode_args.appender == 'emitter'   ){  
+
+
+                                                      class p_Ev_C_Emitter extends p_Ev_C_EventEmitter {
+                                                          constructor(){
+                                                            super()  
+                                                          }
+                                                          p_Ev_C_Emitter_warn(){
+                                                              process.emitWarning('accessing low level process management', {
+                                                                  code: 'process_Event_Control Warning',
+                                                                  detail: 'Hardware resources will be severly compromised if accesed',
+                                                                  ctor:function(){}
+                                                              });  
+                                                          }
+                                                          get on(){                                                                                        
+                                                                this.p_Ev_C_Emitter_warn()                                              
+                                                              // not working for some reason not sure if placing in a function is safe becuas of sync async                                                                                 
+                                                          }    
+                                                          get once(){                                                                                        
+                                                                this.p_Ev_C_Emitter_warn()                                                                                                                                                                             
+                                                          }                                          
+                                                          get addListener(){
+                                                                this.p_Ev_C_Emitter_warn()
+                                                          }
+                                                          get prependListener(){
+                                                                this.p_Ev_C_Emitter_warn()
+                                                          } 
+                                                          get prependOnceListener(){
+                                                                this.p_Ev_C_Emitter_warn()
+                                                          }  
+                                                          get off(){
+                                                                this.p_Ev_C_Emitter_warn()
+                                                          }  
+                                                          get removeListener(){
+                                                                this.p_Ev_C_Emitter_warn()
+                                                          }
+                                                          get removeAllListeners(){
+                                                                this.p_Ev_C_Emitter_warn() 
+                                                          }                                                                                                                     
+                                                          get snufjet(){
+                                                              return this.__proto__.__proto__.addListener
+                                                          }
+                                                          get promptfan(){
+                                                              return this.__proto__.__proto__.once
+                                                              // cant use this it uses the above prototype
+                                                          }
+                                                          get tjet(){
+                                                              return this.__proto__.__proto__.prependListener
+                                                          }
+                                                          get diptuck(){
+                                                              return this.__proto__.__proto__.prependOnceListener
+                                                              // camt use this it uses the above prototypes
+                                                          }
+                                                          get niscom(){
+                                                              return this.__proto__.__proto__.removeListener
+                                                          }
+                                                          get aoki(){
+                                                              return this.__proto__.__proto__.removeAllListeners
+                                                              // cant use this it uses the above prototypes
+                                                          }
+                   
+                                                      }                                                           
+                                                      p_Ev_C.ev_rgs = new p_Ev_C_Emitter()                                                                                                                                                                                                       
+                                                      p_Ev_C.ev_rgs.snufjet(   "p_Ev_i",p_Ev_i   )
+
+
+                                                  }  
+
+
+                                                  else if(    p_Ev_C_listen_handle_n_m_obj.node_mode_args.appender == 'method'   ){
+
+
+                                                      p_Ev_C.p_Ev_i = p_Ev_i
+
+
+                                                  }                           
                                             },
                                             'use_setInterval_unstable':
                                             function(){
@@ -476,7 +492,8 @@ function p_Ev_C_constructor (   dev_obj   ){
                                custom_dev:{
                                             gen_ans:'no'
                                           }                                                                                                                                                                                
-                                    })         
+                                    }            
+            const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode(   p_Ev_C_listen_handle_n_m_obj   )         
             p_Ev_C_listen_handle_n_m.emit(   p_Ev_C_node_mode_threads[0][0],p_Ev_C_node_mode_threads[0][1]   )
             Object.seal(   p_Ev_C   )
             // cant use _events.newListener.listener or .rawListeners(   'newListener'   ) to take it out from  in a  REPL
