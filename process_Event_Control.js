@@ -19,21 +19,51 @@ const p_Ev_C_node_mode_threads       =  n_API.API_n_c.API_node_mode.node_mode_th
                                                                               })
 const p_Ev_C_n_m_t_r                 =  n_API.API_n_c.API_node_mode.n_m_t_r
 const p_Ev_C_EventEmitter            =  n_API.API_n_b_p.events.EventEmitter
+const p_Ev_C_a_l                     =  n_API.API_n_c.a_l
  
 function p_Ev_C_constructor (   dev_obj   ){
             var process_Event_Control = {}
             var p_Ev_C = {}
             p_Ev_C.dev_obj = dev_obj                        
-            p_Ev_C.s_c = {} //figure out how to protect this might not even use this
+            p_Ev_C.s_c = {}  //figure out how to protect this might not even use this
             p_Ev_C.ev_rgs_obj = {}
             // p_Ev_i 
             //  process event inserter, used to add custom listeners to the process
             // try not to use functions
-            const p_Ev_i = function(   dev_obj   ){
-                  for(   var p_Ev_C_2_i =0; p_Ev_C_2_i != Object.entries(   dev_obj   ).length ; p_Ev_C_2_i ++ ){
-                      console.log(   Object.entries(   dev_obj   )[p_Ev_C_2_i]   )
-                  }
-                  debugger
+            // if this does not work try to refer to the needed object unreferencedd
+            const p_Ev_i = function(   dev_obj   ){                                                  
+                  for(   var p_Ev_C_2_i =0; p_Ev_C_2_i != Object.entries(   dev_obj   ).length ; p_Ev_C_2_i++ ){
+                      // console.log(   Object.entries(   dev_obj   )[p_Ev_C_2_i]   )
+                      p_Ev_C.s_c.event_name = Object.keys(   dev_obj   )[p_Ev_C_2_i]
+                      p_Ev_C.s_c.actual     = Object.entries(   Object.entries(   dev_obj   )[p_Ev_C_2_i][1]   )   
+                      debugger                       
+                      for(   var p_Ev_C_3_i =0; p_Ev_C_3_i != p_Ev_C.s_c.actual.length; p_Ev_C_3_i++){          
+
+
+                          if(   p_Ev_C.s_c.actual[p_Ev_C_3_i][1].append_type   == undefined){
+
+
+                              p_Ev_C.s_c.actual[p_Ev_C_3_i][1].append_type = 'once'
+
+
+                          }      
+
+                                    
+                          process[p_Ev_C.s_c.actual[p_Ev_C_3_i][1].append_type](   p_Ev_C.s_c.event_name,   p_Ev_C_a_l({
+                                                                                    listener_function:p_Ev_C.s_c.actual[p_Ev_C_3_i][1].execute,
+                                                                                    sync             :p_Ev_C.s_c.actual[p_Ev_C_3_i][1].sync
+                                                                                },p_Ev_C.s_c.actual[p_Ev_C_3_i]   ))
+                      }
+                            
+                      
+
+
+
+
+
+
+                      // process.on(   Object.keys(   dev_obj   )[p_Ev_C_2_i],   )
+                  }                  
             }            
             const p_Ev_C_listen_handle_n_m = p_Ev_C_node_mode({   
 

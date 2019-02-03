@@ -4,7 +4,7 @@
 
  node_mode_threads_files = {
                         "template.js":[
-                            ['test',      'add_listener'         ],                            
+                            ['test',      'emit_listener'                 ],                            
                           ],
                         "process_Event_Control.js":[
                             ['test',      'use_class_stable'              ],
@@ -16,7 +16,7 @@
 
 module.exports.n_m_t_registry = {
                                     break_p_Ev_C_n_m:[['test',
-                                                        ['use_raw','use_props','just_require','no_metadata','add_listener']
+                                                        ['use_raw','use_props','just_require','no_metadata','emit_listener']
                                                       ]],                                                                                                                                                          
                                     p_Ev_C_1_i_n_m  : [['test',
                                                         ['newlist_broken','prevent']

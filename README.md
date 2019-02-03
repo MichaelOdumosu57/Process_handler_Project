@@ -79,11 +79,11 @@ p_Ev_C_listen_handle_n_m
 
 
     p_Ev_i
-        this function makes the emitter for the process and handles many things so the developer does not have to
+        this is the event  makes the emitter for the process specfic event and handles many things so the developer does not have to
             future support will be provided to remove process, or the dev can hold the function in a constant and remove any time
             similar to n_m_E where can add listeners any where after the required arguments exist
 
-            the argument template
+            the_argument_template =
             {
             'event':{
                           'simple_handler':{
@@ -95,15 +95,20 @@ p_Ev_C_listen_handle_n_m
                                                           the_initer:0,
                                                           more_items: {...}
                                                         },
-                                                execute:function(   dev_obj   ){
-                                                    console.log(   dev_obj.the_initer   )
+                                                execute:function(){
+                                                    dev_obj = arguments[2][1]
                                                     close_obj(   more_items   )
                                                     cosnole.log('everything closed was not that convieniet')
                                                 }
+                                                sync:'sync',
+                                                append_type:once
 
                                             }
                       }  
-              }   
+              }  
+
+              use
+              try_it.ev_rgs.emit(   'p_Ev_i',the_argument_template   )
 
               to resuse functions declare them in a constant
               and to provide more process event handler parameters for the same event copy and add simple handler template to the event object
@@ -119,11 +124,34 @@ p_Ev_C_listen_handle_n_m
                   text: the message you want to provide when the listener is going to be executed <string>
                   log: where to actually provide the values, default = none values, log, warn,error,none
 
-              
+              params:
+                  args for the listnener
+
+              execute:
+                  the actual listener 
+                  the parameters you have provided for the listeners are in arguments[2][1], everything else is a by product or creating the listnener
+
+              sync:whether the listnener is done through setInterval, process.nextTick or by sync default sync
+
+              append_type: how to append the listeners, default once, because the dangerous nature of working with process
+
+
+NOTE: when working with process terminating events such as uncaughtException or a SIGNAL  make sure you take care of what the API
+      uses as well as OS related process handling this is important altough considered Event_Control does not guarantee proper cleanup              
 
 
 
+to see it in practice
 
+const node_mode_threads_files = {
+                        "template.js":[
+                            ['test',      'add_listener'         ],                            
+                          ],
+                        "process_Event_Control.js":[
+                            ['test',      'use_setInterval_unstable'   ],
+                            ['test',      'prevent'                    ]                            
+                          ]                           
+                    }   
 
 
 
@@ -168,18 +196,7 @@ const node_mode_threads_files = {
                           ]                                
                     }                                      
 
-
-to see it take time to reject listener modification
-
-const node_mode_threads_files = {
-                        "template.js":[
-                            ['test',      'add_listener'         ],                            
-                          ],
-                        "process_Event_Control.js":[
-                            ['test',      'use_setInterval_unstable'   ],
-                            ['test',      'prevent'                    ]                            
-                          ]                           
-                    }                    
+                 
 
 to see it take time to reject one added listener
 
