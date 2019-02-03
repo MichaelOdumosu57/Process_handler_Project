@@ -78,6 +78,52 @@ p_Ev_C_listen_handle_n_m
     try_it = p_Ev_C(   p_Ev_C_listen_handle_n_m :{your node_mode_metadata here}  )
 
 
+    p_Ev_i
+        this function makes the emitter for the process and handles many things so the developer does not have to
+            future support will be provided to remove process, or the dev can hold the function in a constant and remove any time
+            similar to n_m_E where can add listeners any where after the required arguments exist
+
+            the argument template
+            {
+            'event':{
+                          'simple_handler':{
+                                                message  :{
+                                                            text:'sync operations before I am ready to finish here',
+                                                            log: 'none'
+                                                          }
+                                                params:{
+                                                          the_initer:0,
+                                                          more_items: {...}
+                                                        },
+                                                execute:function(   dev_obj   ){
+                                                    console.log(   dev_obj.the_initer   )
+                                                    close_obj(   more_items   )
+                                                    cosnole.log('everything closed was not that convieniet')
+                                                }
+
+                                            }
+                      }  
+              }   
+
+              to resuse functions declare them in a constant
+              and to provide more process event handler parameters for the same event copy and add simple handler template to the event object
+              to provide for several events, copy and paste the events temple in an object
+
+              event
+                  the name of the process event, examples are exit and uncaughtException refer to the nodejs documentation for more examples
+
+              simple handler,
+                  its reall the listnener metadata for the process event thats all
+
+              message
+                  text: the message you want to provide when the listener is going to be executed <string>
+                  log: where to actually provide the values, default = none values, log, warn,error,none
+
+              
+
+
+
+
 
 
 

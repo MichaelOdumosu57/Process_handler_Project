@@ -21,8 +21,9 @@ const n_m_t_r                 =  n_API.API_n_c.API_node_mode.n_m_t_r
 const node_mode_threads       =  n_API.API_n_c.API_node_mode.node_mode_threads({
                                                                                 calling_file:__filename.split("/")[__filename.split("/").length-1]
                                                                               }) 
+const p_Ev_C = require('./process_Event_Control.js') 
 
-debugger;
+
 
 const break_p_Ev_C_n_m = node_mode({
 
@@ -43,27 +44,87 @@ const break_p_Ev_C_n_m = node_mode({
                                               const try_it = require('./process_Event_Control.js')                                                
                                           }], 
                                           ['add_listener',
-                                          function(){ 
-                                              const p_Ev_C = require('./process_Event_Control.js')   
-                                              debugger                                                                                        
-                                              try_it = p_Ev_C({                                                                  
+                                          function(){                                                                                                                                                                                       
+                                                try_it = p_Ev_C({                                                                  
                                                                   p_Ev_C_listen_handle_n_m:{
                                                                                               node_mode_async:{
                                                                                                                   'no_const_fn'                 :'sync',
                                                                                                                   'const_fn_new_help'           :'sync',
-                                                                                                                  'use_class_stable'            :'async',
+                                                                                                                  'use_class_stable'            :'sync',
                                                                                                                   'use_setInterval_unstable'    :'sync',
                                                                                                                   'C'                           :'async',
                                                                                                                   'D'                           :'async'
                                                                                                               } 
                                                                                                                                                   
                                                                   }
-                                                              })
-                                              try_it.ev_rgs.on('b',function(){console.log('delete me')})                                                
+                                                              })                                                                                                                                                                                     
+                                                  try_it.ev_rgs.emit('p_Ev_i',{                                                                                                                                                                   
+                                                                                  'beforeExit':{
+                                                                                                'simple_handler':{
+                                                                                                                      message  :'async operations before I am ready to finish here',
+                                                                                                                      params:{
+                                                                                                                                the_initer:0
+                                                                                                                              },
+                                                                                                                      execute:function(   dev_obj   ){
+                                                                                                                          console.log(   dev_obj.the_initer   )                                                                                                                              
+                                                                                                                      }
+
+                                                                                                                  }
+                                                                                            },
+                                                                                  'a':{
+                                                                                                'simple_handler':{
+                                                                                                                      message  :'async operations before I am ready to finish here',
+                                                                                                                      params:{
+                                                                                                                                the_initer:0
+                                                                                                                              },
+                                                                                                                      execute:function(   dev_obj   ){
+                                                                                                                          console.log(   dev_obj.the_initer   )                                                                                                                              
+                                                                                                                      }
+
+                                                                                                                  }
+                                                                                            },
+                                                                                  'b':{
+                                                                                                'simple_handler':{
+                                                                                                                      message  :'async operations before I am ready to finish here',
+                                                                                                                      params:{
+                                                                                                                                the_initer:0
+                                                                                                                              },
+                                                                                                                      execute:function(   dev_obj   ){
+                                                                                                                          console.log(   dev_obj.the_initer   )                                                                                                                              
+                                                                                                                      }
+
+                                                                                                                  }
+                                                                                            },
+                                                                                  'c':{
+                                                                                                'simple_handler':{
+                                                                                                                      message  :'async operations before I am ready to finish here',
+                                                                                                                      params:{
+                                                                                                                                the_initer:0
+                                                                                                                              },
+                                                                                                                      execute:function(   dev_obj   ){
+                                                                                                                          console.log(   dev_obj.the_initer   )                                                                                                                              
+                                                                                                                      }
+
+                                                                                                                  }
+                                                                                            },
+                                                                                  'd':{
+                                                                                                'simple_handler':{
+                                                                                                                      message  :'async operations before I am ready to finish here',
+                                                                                                                      params:{
+                                                                                                                                the_initer:0
+                                                                                                                              },
+                                                                                                                      execute:function(   dev_obj   ){
+                                                                                                                          console.log(   dev_obj.the_initer   )                                                                                                                              
+                                                                                                                      }
+
+                                                                                                                  }
+                                                                                            }                                                                                                                                                                                                                                                                                                                                                                                
+                                                                              })
+                                                                                                                                                
                                           }],  
                                           ['no_metadata',
                                           function(){                                         
-                                              const p_Ev_C = require('./process_Event_Control.js'     
+                                              const p_Ev_C = require('./process_Event_Control.js')     
                                               try_it = p_Ev_C() 
                                               try_it.on('b',function(){console.log('delete me')})  
 
@@ -73,12 +134,11 @@ const break_p_Ev_C_n_m = node_mode({
                                               'use_raw'               :'sync',
                                               'use_props'             :'sync',
                                               'just_require'          :'async',
-                                              'add_listener'          :'async',
+                                              'add_listener'          :'async' ,
                                               'no_metadata'           :'async'
                                           }                                                                                                                                                                                                                                 
                                     }) 
 break_p_Ev_C_n_m.emit(    node_mode_threads[0][0],node_mode_threads[0][1]   )
-console.log(   try_it   )
 // process.exit()
 p_uE.message = 'an error with the process event emitter occured'
 p_bE.message = 'async operations before I am ready to finish here'
@@ -87,5 +147,5 @@ p_bE.last.push(['simple_handler',{
                                   }])
 p_bE.simple_handler = function(   dev_obj   ){
     console.log(   dev_obj.the_initer   )    
-    debugger;
+    
 }
