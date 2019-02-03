@@ -2,6 +2,7 @@ process_Event_Control
     a dynamic process plugin handler
 s_c
     events for the  process objecct to bind listeners to 
+    the event name listnener name and its function is saved here, so it can be easily removed
 
 
 p_Ev_C.ev_rgs event_register

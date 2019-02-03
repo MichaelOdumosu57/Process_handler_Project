@@ -26,6 +26,7 @@ function p_Ev_C_constructor (   dev_obj   ){
             var p_Ev_C = {}
             p_Ev_C.dev_obj = dev_obj                        
             p_Ev_C.s_c = {}  //figure out how to protect this might not even use this
+            p_Ev_C.s_c.list = {} // figure out how to send the event listener here for seamless removal
             p_Ev_C.ev_rgs_obj = {}
             // p_Ev_i 
             //  process event inserter, used to add custom listeners to the process
@@ -48,13 +49,28 @@ function p_Ev_C_constructor (   dev_obj   ){
                           }      
 
 
-                          process[p_Ev_C.s_c.actual[p_Ev_C_3_i][1].append_type](   p_Ev_C.s_c.event_name,   p_Ev_C_a_l({
-                                                                                    listener_function:p_Ev_C.s_c.actual[p_Ev_C_3_i][1].execute,
-                                                                                    sync             :p_Ev_C.s_c.actual[p_Ev_C_3_i][1].sync
-                                                                                },p_Ev_C.s_c.actual[p_Ev_C_3_i]   ))
+                          if(   p_Ev_C.s_c.list[p_Ev_C.s_c.event_name] == undefined){
+
+
+                              p_Ev_C.s_c.list[p_Ev_C.s_c.event_name] = {}
+
+
+                          }
+
+
+                          p_Ev_C.s_c.listener =p_Ev_C_a_l({
+                                                    listener_function:p_Ev_C.s_c.actual[p_Ev_C_3_i][1].execute,
+                                                    sync             :p_Ev_C.s_c.actual[p_Ev_C_3_i][1].sync
+                                                },p_Ev_C.s_c.actual[p_Ev_C_3_i]   ) 
+                          p_Ev_C.s_c.list[p_Ev_C.s_c.event_name][p_Ev_C.s_c.actual[p_Ev_C_3_i][0]] = p_Ev_C.s_c.listener
+                          debugger                                                
+                          process[p_Ev_C.s_c.actual[p_Ev_C_3_i][1].append_type](   p_Ev_C.s_c.event_name,   p_Ev_C.s_c.listener)
                       }
                             
                       
+
+// process.off(   Object.keys(p_Ev_C.s_c.list)[0], Object.values(p_Ev_C.s_c.list)[0].simple_handler   )
+// use this logic to remove process listeners
 
 
 
